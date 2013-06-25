@@ -10,4 +10,5 @@
                         :components ((:file "package")
                                      (:file "lexer-spec")
                                      (:file "parser-spec")
+                                     (:file "linear")
                                      (:file "parse-lisp-spec")))))

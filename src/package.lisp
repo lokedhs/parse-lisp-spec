@@ -5,4 +5,4 @@
 (in-package :parse-lisp-spec)
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (defparameter *compile-decl* '(optimize (speed 2) (safety 1) (debug 0))))
+  (defparameter *compile-decl* '(optimize (speed 0) (safety 3) (debug 3))))
