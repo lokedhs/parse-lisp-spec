@@ -41,15 +41,18 @@
                      do (setq end (cdr end)))))
       (values result end))))
 
-(defun process-system-class (name tokens)
-  (print (list 'processing name))
-  (multiple-value-bind (active rest) (split-token-list tokens #'(lambda (v) (eq (car v) 'endcom)))
-    (print active)
+(defun process-begincom (name tokens kind)
+  (format t "Processing ~s (~a)~%" name kind)
+  (multiple-value-bind (active rest)
+      (split-token-list tokens #'(lambda (v) (eq (car v) 'endcom)))
+    (format t "  active token: ~s~%" active)
     rest))
 
 (defun dispatch (tokens)
   (case (caar tokens)
-    (begincom-system-class (process-system-class (cadar tokens) (cdr tokens)))
+    (begincom-system-class (process-begincom (cadar tokens) (cdr tokens) (caar tokens)))
+    (begincom-ftype (process-begincom (cadar tokens) (cdr tokens) (caar tokens)))
+    (begincom-type (process-begincom (cadar tokens) (cdr tokens) (caar tokens)))
     (t (cdr tokens))))
 
 (defun parse-file (tokens)

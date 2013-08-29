@@ -32,4 +32,6 @@
                          for v = (multiple-value-list (funcall lexer))
                          while (car v)
                          collect v)))
-          (parse-file tokens))))))
+          ;(parse-file tokens)
+          tokens
+          )))))
